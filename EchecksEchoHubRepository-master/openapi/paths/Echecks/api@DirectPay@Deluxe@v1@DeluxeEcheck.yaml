@@ -3,9 +3,13 @@ post:
     - eCheck
   summary: Deluxe eCheck Payment Request
   operationId: DeluxePayeeEcheckRequest
-  security:
-    - x-ApiKey: []
-    - x-ClientKey: []
+  parameters: 
+    - name: x-Authorization
+      in: header
+      required: true
+      schema:
+        type: string
+        $ref: ../../components/headers/xAuthorization.yaml
   description: >
     This endpoint allows the API user to create a Deluxe or MPX eCheck and a
     Deluxe checking account ID for a given Payee.  
@@ -52,30 +56,15 @@ post:
                 ReponseCodeDesc: Transaction Failed
                 ResponseTransactionID: Transaction Number
                 TransError:  
-                    PaymentResponseCode: Response for Payment response code 900
-                    PaymentResponseCodeDesc: Duplicate Payor Reference ID
-                    TransactionId: Transaction Number
-                    EchoHubTransactionId: EchoHub Transaction Number
-            mapName2:   
-                description: Please scroll the above dropdown list for more response codes          
-                summary: "5001"
-                value:
-                  ReponseCode: Response Code 900
-                  ReponseCodeDesc: Transaction Failed
-                  ResponseTransactionID: Transaction Number
-                  TransError:  
-                      PaymentResponseCode: Response for Payment response code 5001
-                      PaymentResponseCodeDesc: Check number has already been taken
-                      TransactionId: Transaction Number
-                      EchoHubTransactionId: EchoHub Transaction Number        
-            mapName3:   
-                description: Please scroll the above dropdown list for more response codes          
-                summary: "172"
-                value:
-                  ReponseCode: Response Code 900
-                  ReponseCodeDesc: Global System Error                 
-                  TransError:  
-                      ErrorCode: Response for Payment response code 172
+                  -  PaymentResponseCode: Response for Payment response code 900
+                     PaymentResponseCodeDesc: Duplicate Payor Reference ID
+                     TransactionId: Transaction Number
+                     EchoHubTransactionId: EchoHub Transaction Number           
+                  -  PaymentResponseCode: Response for Payment response code 5001
+                     PaymentResponseCodeDesc: Check number has already been taken
+                     TransactionId: Transaction Number
+                     EchoHubTransactionId: EchoHub Transaction Number                     
+                  -   ErrorCode: Response for Payment response code 172
                       ErrorCodeDesc: Invalid or Missing Payor
                       creationdate: Date and Time of the response
                       
