@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: ECHOHUB API
   description: >-
-    API Endpoints for the VCP  clients.
+    API Endpoints for the ECHOHUB B2B clients.
 
         SandBox url: https://sandbox.echohealthincapi.com/
         Production Url : https://api.echohealthincapi.com/
@@ -23,7 +23,6 @@ info:
 servers:
   - url: https://sandbox.echohealthincapi.com
   - url: https://api.echohealthincapi.com
-    
 paths:
   #Authorization
   /api/Authentication/v1/Authentication:
